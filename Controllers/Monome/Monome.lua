@@ -11,7 +11,7 @@ A device-specific class, comes with presets for the monome128
 
 Input
 
-  /press [x] [y] [pressed]
+  /grid/key [x] [y] [pressed]
 
   /tilt [hor] [ver]
 
@@ -19,9 +19,9 @@ Output
 
   /sys/prefix
 
-  /led
+  /grid/led/set
 
-  /intensity
+  /grid/led/intensity
 
 
 
@@ -96,7 +96,7 @@ function Monome:release()
 
   if (self.client) and (self.client.is_open) then
     self.client:send(
-      renoise.Osc.Message(self.prefix.."/clear",{
+      renoise.Osc.Message(self.prefix.."/grid/led/all",{
         {tag="i", value=0},
       })
     )
